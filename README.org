@@ -1,2 +1,14 @@
 * Sample Game
 Interfacing an erlang server with a web game
+* Description
+There are always 10 coloured squares on an 10 x 20 grid. Match the colours with those seen on the top and bottom of the app. The client interfaces with an erlang server that synchronizes the generation and deletion of squares across all running apps. 
+
+When players click on a square it sends an update to the server. The update tests if that unique square still exists, if so it removes the square from all clients randomly places a new square and changes the colour of the status bar.
+
+By clicking on squares that match the colour of the status bar the client gains 1 point, by clicking on the wrong colour the client losses a point. Clients start with 10 points. Any client that falls below 1 point will be disconnected from the server.
+
+
+* Limitations
+There are issues due to ping / client latency (i.e. tcp buffering and browsers). Since all games are synced those with the lowest latency have the longest opportunity to click a square.
+
+Note that points will still be allocated so long as the square has been clicked in the slower client (i.e. before the server kills a square as long as you have not collected points on it previously you will can still click on it).
