@@ -1,0 +1,2 @@
+* Sample Game
+Interfacing an erlang server with a web game
